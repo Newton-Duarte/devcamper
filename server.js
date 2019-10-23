@@ -5,6 +5,8 @@ const morgan = require('morgan');
 const colors = require('colors');
 const connectDB = require('./config/db');
 const app = express();
+// Body parser
+app.use(express.json());
 // Load env vars
 dotenv.config({ path: './config/config.env'});
 // Route files
