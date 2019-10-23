@@ -3,6 +3,7 @@ const dotenv = require('dotenv');
 // const logger = require('./middleware/logger');
 const morgan = require('morgan');
 const colors = require('colors');
+const errorHandler = require('./middleware/error');
 const connectDB = require('./config/db');
 const app = express();
 // Body parser
@@ -13,6 +14,8 @@ dotenv.config({ path: './config/config.env'});
 const bootcamps = require('./routes/bootcamps');
 // Mount routes
 app.use('/api/v1/bootcamps', bootcamps);
+
+app.use(errorHandler);
 
 // Connect to database
 connectDB();
